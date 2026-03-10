@@ -52,7 +52,51 @@
         .container {
             max-width: 1200px;
             margin: 0 auto;
-            padding: 80px 24px;
+            padding: 40px 24px 80px 24px;
+        }
+
+        /* ══════════════════════════════════════════════════════════════
+           NAVIGATION & BUTTONS
+           ══════════════════════════════════════════════════════════════ */
+        .nav-bar {
+            display: flex;
+            justify-content: flex-start;
+            margin-bottom: 60px;
+        }
+
+        .footer-actions {
+            display: flex;
+            justify-content: center;
+            margin-top: 80px;
+            padding-top: 40px;
+            border-top: 1px solid var(--border);
+            animation: fadeIn var(--dur-slow) var(--ease-out) 0.5s both;
+        }
+
+        .btn-back {
+            text-decoration: none;
+            color: var(--text-main);
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.8rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 12px 24px;
+            border: 1px solid var(--border);
+            border-radius: 100px;
+            transition: all 0.3s ease;
+            background: var(--surface);
+        }
+
+        .btn-back:hover {
+            border-color: var(--accent);
+            color: var(--accent);
+            background: var(--accent-dim);
+            transform: scale(1.02);
+        }
+
+        .btn-back i {
+            font-size: 0.9rem;
         }
 
         /* ══════════════════════════════════════════════════════════════
@@ -182,13 +226,14 @@
             to { opacity: 1; transform: translateY(0); }
         }
 
-        /* Staggered Delay for Cards */
-        .project-card:nth-child(1) { animation-delay: 0.1s; }
-        .project-card:nth-child(2) { animation-delay: 0.2s; }
-        .project-card:nth-child(3) { animation-delay: 0.3s; }
-        .project-card:nth-child(4) { animation-delay: 0.4s; }
-        .project-card:nth-child(5) { animation-delay: 0.5s; }
-        .project-card:nth-child(6) { animation-delay: 0.6s; }
+        /* Staggered Delay */
+        .project-card:nth-child(1) { animation-delay: 0.05s; }
+        .project-card:nth-child(2) { animation-delay: 0.10s; }
+        .project-card:nth-child(3) { animation-delay: 0.15s; }
+        .project-card:nth-child(4) { animation-delay: 0.20s; }
+        .project-card:nth-child(5) { animation-delay: 0.25s; }
+        .project-card:nth-child(6) { animation-delay: 0.30s; }
+        .project-card:nth-child(7) { animation-delay: 0.35s; }
 
         @media (max-width: 600px) {
             .project-grid { grid-template-columns: 1fr; }
@@ -199,6 +244,13 @@
 <body>
 
     <div class="container">
+        <!-- Top Navigation -->
+        <nav class="nav-bar">
+            <a href="http://rajin.work.gd/" class="btn-back">
+                <i class="fas fa-arrow-left"></i> Main Portfolio
+            </a>
+        </nav>
+
         <!-- Header -->
         <header class="header">
             <span class="tagline">Curiosity-Driven Development</span>
@@ -209,13 +261,23 @@
         <!-- Projects Grid -->
         <main class="project-grid">
 
+            <!-- Rajin Work GD -->
+            <a href="http://rajin.work.gd/" class="project-card" target="_blank">
+                <div class="project-icon">
+                    <i class="fas fa-network-wired"></i>
+                </div>
+                <h3>Network Hub</h3>
+                <p>A personalized workspace and domain hub designed for efficient navigation and project hosting management.</p>
+                <div class="project-link">Connect Now <i class="fas fa-arrow-right"></i></div>
+            </a>
+
             <!-- Image Bin 38 -->
             <a href="https://radiantrider38.github.io/imageBin38/" class="project-card" target="_blank">
                 <div class="project-icon">
                     <i class="fas fa-expand-arrows-alt"></i>
                 </div>
                 <h3>Image Resizer & Converter</h3>
-                <p>A high-performance utility for bulk image processing. Effortlessly change dimensions and switch between formats without losing quality.</p>
+                <p>A high-performance utility for bulk image processing. Effortlessly change dimensions and switch between formats.</p>
                 <div class="project-link">Launch Project <i class="fas fa-arrow-right"></i></div>
             </a>
 
@@ -225,7 +287,7 @@
                     <i class="fas fa-chart-pie"></i>
                 </div>
                 <h3>Pie Visualize</h3>
-                <p>An interactive data visualization tool that breathes life into abstract numbers. Designed for clarity and aesthetic presentation.</p>
+                <p>An interactive data visualization tool that breathes life into abstract numbers with aesthetic presentation.</p>
                 <div class="project-link">Launch Project <i class="fas fa-arrow-right"></i></div>
             </a>
 
@@ -235,7 +297,7 @@
                     <i class="fas fa-brain"></i>
                 </div>
                 <h3>Word Association Test</h3>
-                <p>A psychological exploration tool based on WAT principles. Gain insights into subconscious patterns through speed-based responses.</p>
+                <p>A psychological exploration tool based on WAT principles to gain insights into subconscious cognitive patterns.</p>
                 <div class="project-link">Launch Project <i class="fas fa-arrow-right"></i></div>
             </a>
 
@@ -245,7 +307,7 @@
                     <i class="fas fa-film"></i>
                 </div>
                 <h3>Movie Suggestion Archive</h3>
-                <p>A curated vault of cinematic experiences. Filtered through a lens of critical acclaim and hidden gems.</p>
+                <p>A curated vault of cinematic experiences filtered through a lens of critical acclaim and hidden gems.</p>
                 <div class="project-link">Launch Project <i class="fas fa-arrow-right"></i></div>
             </a>
 
@@ -254,8 +316,8 @@
                 <div class="project-icon">
                     <i class="fas fa-search"></i>
                 </div>
-                <h3>BDR Massacre Showcase</h3>
-                <p>An investigative digital showcase documenting critical historical events with a focus on archival preservation and truth-seeking.</p>
+                <h3>Investigation Showcase</h3>
+                <p>An investigative digital showcase documenting critical historical events with a focus on truth-seeking.</p>
                 <div class="project-link">Launch Project <i class="fas fa-arrow-right"></i></div>
             </a>
 
@@ -265,11 +327,18 @@
                     <i class="fas fa-lightbulb"></i>
                 </div>
                 <h3>ISSB IQ Demo</h3>
-                <p>A training simulation designed for cognitive aptitude. Practice time-bound logic puzzles and spatial reasoning challenges.</p>
+                <p>A training simulation designed for cognitive aptitude, featuring time-bound logic and reasoning puzzles.</p>
                 <div class="project-link">Launch Project <i class="fas fa-arrow-right"></i></div>
             </a>
 
         </main>
+
+        <!-- Bottom Navigation -->
+        <footer class="footer-actions">
+            <a href="http://rajin.work.gd/" class="btn-back">
+                <i class="fas fa-house"></i> Return to Portfolio
+            </a>
+        </footer>
     </div>
 
 </body>
