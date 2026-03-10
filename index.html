@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PROJECTS | Inquisitive Mind</title>
+    <!-- Font Awesome & Google Fonts -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;800&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+    <style>
+        /* ══════════════════════════════════════════════════════════════
+           DESIGN SYSTEM INTEGRATION
+           ══════════════════════════════════════════════════════════════ */
+        :root {
+            --bg: #0a0a0a;
+            --surface: #111111;
+            --surface2: #161616;
+            --border: #1e1e1e;
+            --border-soft: #262626;
+            --accent: #c8f04d;
+            --accent-dim: rgba(200, 240, 77, 0.08);
+            --text-main: #e5e5e5;
+            --text-dim: #a3a3a3;
+            --text-muted: #525252;
+            --radius-md: 12px;
+            --radius-lg: 24px;
+            --dur-slow: 0.6s;
+            --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            background-color: var(--bg);
+            color: var(--text-main);
+            font-family: "Inter", sans-serif;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Grain Overlay */
+        body::before {
+            content: "";
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+            opacity: 0.05;
+            pointer-events: none;
+            z-index: 999;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 80px 24px;
+        }
+
+        /* ══════════════════════════════════════════════════════════════
+           HERO SECTION
+           ══════════════════════════════════════════════════════════════ */
+        .header {
+            margin-bottom: 80px;
+            animation: fadeIn var(--dur-slow) var(--ease-out);
+        }
+
+        .tagline {
+            font-family: 'JetBrains Mono', monospace;
+            color: var(--accent);
+            text-transform: uppercase;
+            font-size: 0.8rem;
+            letter-spacing: 0.2em;
+            margin-bottom: 16px;
+            display: block;
+        }
+
+        .header h1 {
+            font-size: clamp(2.5rem, 8vw, 4rem);
+            font-weight: 800;
+            letter-spacing: -0.04em;
+            line-height: 1.1;
+            margin-bottom: 24px;
+        }
+
+        .header p {
+            color: var(--text-dim);
+            max-width: 600px;
+            font-size: 1.1rem;
+        }
+
+        /* ══════════════════════════════════════════════════════════════
+           PROJECT GRID
+           ══════════════════════════════════════════════════════════════ */
+        .project-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 32px;
+        }
+
+        .project-card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-md);
+            padding: 32px;
+            display: flex;
+            flex-direction: column;
+            transition: all 0.4s var(--ease-out);
+            text-decoration: none;
+            color: inherit;
+            position: relative;
+            overflow: hidden;
+            animation: slideUp var(--dur-slow) var(--ease-out) both;
+        }
+
+        .project-card:hover {
+            border-color: var(--accent);
+            background: var(--surface2);
+            transform: translateY(-8px);
+        }
+
+        .project-icon {
+            width: 56px;
+            height: 56px;
+            background: var(--accent-dim);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 24px;
+            color: var(--accent);
+            font-size: 1.5rem;
+            transition: transform 0.3s ease;
+        }
+
+        .project-card:hover .project-icon {
+            transform: scale(1.1) rotate(5deg);
+        }
+
+        .project-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 12px;
+            font-weight: 700;
+            letter-spacing: -0.02em;
+        }
+
+        .project-card p {
+            color: var(--text-dim);
+            font-size: 0.95rem;
+            margin-bottom: 24px;
+            flex-grow: 1;
+        }
+
+        .project-link {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.75rem;
+            color: var(--accent);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+        }
+
+        .project-link i {
+            font-size: 0.9rem;
+            transition: transform 0.3s ease;
+        }
+
+        .project-card:hover .project-link i {
+            transform: translateX(4px);
+        }
+
+        /* ══════════════════════════════════════════════════════════════
+           ANIMATIONS
+           ══════════════════════════════════════════════════════════════ */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes slideUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Staggered Delay for Cards */
+        .project-card:nth-child(1) { animation-delay: 0.1s; }
+        .project-card:nth-child(2) { animation-delay: 0.2s; }
+        .project-card:nth-child(3) { animation-delay: 0.3s; }
+        .project-card:nth-child(4) { animation-delay: 0.4s; }
+        .project-card:nth-child(5) { animation-delay: 0.5s; }
+        .project-card:nth-child(6) { animation-delay: 0.6s; }
+
+        @media (max-width: 600px) {
+            .project-grid { grid-template-columns: 1fr; }
+            .header h1 { font-size: 2.5rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <span class="tagline">Curiosity-Driven Development</span>
+            <h1>Inquisitive <br>Mind Projects</h1>
+            <p>A collection of tools, visualizations, and investigative archives built to explore the intersections of data, psychology, and history.</p>
+        </header>
+
+        <!-- Projects Grid -->
+        <main class="project-grid">
+
+            <!-- Image Bin 38 -->
+            <a href="https://radiantrider38.github.io/imageBin38/" class="project-card" target="_blank">
+                <div class="project-icon">
+                    <i class="fas fa-expand-arrows-alt"></i>
+                </div>
+                <h3>Image Resizer & Converter</h3>
+                <p>A high-performance utility for bulk image processing. Effortlessly change dimensions and switch between formats without losing quality.</p>
+                <div class="project-link">Launch Project <i class="fas fa-arrow-right"></i></div>
+            </a>
+
+            <!-- Pie Visualize -->
+            <a href="https://radiantrider38.github.io/pi" class="project-card" target="_blank">
+                <div class="project-icon">
+                    <i class="fas fa-chart-pie"></i>
+                </div>
+                <h3>Pie Visualize</h3>
+                <p>An interactive data visualization tool that breathes life into abstract numbers. Designed for clarity and aesthetic presentation.</p>
+                <div class="project-link">Launch Project <i class="fas fa-arrow-right"></i></div>
+            </a>
+
+            <!-- Word Association Test -->
+            <a href="https://radiantrider38.github.io/wattest" class="project-card" target="_blank">
+                <div class="project-icon">
+                    <i class="fas fa-brain"></i>
+                </div>
+                <h3>Word Association Test</h3>
+                <p>A psychological exploration tool based on WAT principles. Gain insights into subconscious patterns through speed-based responses.</p>
+                <div class="project-link">Launch Project <i class="fas fa-arrow-right"></i></div>
+            </a>
+
+            <!-- Movie Archive -->
+            <a href="https://radiantrider38.github.io/movie" class="project-card" target="_blank">
+                <div class="project-icon">
+                    <i class="fas fa-film"></i>
+                </div>
+                <h3>Movie Suggestion Archive</h3>
+                <p>A curated vault of cinematic experiences. Filtered through a lens of critical acclaim and hidden gems.</p>
+                <div class="project-link">Launch Project <i class="fas fa-arrow-right"></i></div>
+            </a>
+
+            <!-- BDR Massacre -->
+            <a href="https://radiantrider38.github.io/bdr" class="project-card" target="_blank">
+                <div class="project-icon">
+                    <i class="fas fa-search"></i>
+                </div>
+                <h3>BDR Massacre Showcase</h3>
+                <p>An investigative digital showcase documenting critical historical events with a focus on archival preservation and truth-seeking.</p>
+                <div class="project-link">Launch Project <i class="fas fa-arrow-right"></i></div>
+            </a>
+
+            <!-- ISSB IQ Demo -->
+            <a href="https://radiantrider38.github.io/iqdemo" class="project-card" target="_blank">
+                <div class="project-icon">
+                    <i class="fas fa-lightbulb"></i>
+                </div>
+                <h3>ISSB IQ Demo</h3>
+                <p>A training simulation designed for cognitive aptitude. Practice time-bound logic puzzles and spatial reasoning challenges.</p>
+                <div class="project-link">Launch Project <i class="fas fa-arrow-right"></i></div>
+            </a>
+
+        </main>
+    </div>
+
+</body>
+</html>
