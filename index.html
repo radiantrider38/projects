@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PROJECTS | Inquisitive Mind</title>
-    <!-- Font Awesome & Google Fonts -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;800&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
     <style>
@@ -61,16 +60,20 @@
         .nav-bar {
             display: flex;
             justify-content: flex-start;
+            gap: 16px;
             margin-bottom: 60px;
+            align-items: center;
         }
 
         .footer-actions {
             display: flex;
             justify-content: center;
+            gap: 16px;
             margin-top: 80px;
             padding-top: 40px;
             border-top: 1px solid var(--border);
             animation: fadeIn var(--dur-slow) var(--ease-out) 0.5s both;
+            align-items: center;
         }
 
         .btn-back {
@@ -95,8 +98,23 @@
             transform: scale(1.02);
         }
 
+        /* High Visibility Button Style */
+        .btn-highlight {
+            background: var(--accent);
+            color: var(--bg);
+            border: 1px solid var(--accent);
+            font-weight: 700;
+            padding: 12px 18px;
+        }
+
+        .btn-highlight:hover {
+            background: var(--bg);
+            color: var(--accent);
+            transform: scale(1.1);
+        }
+
         .btn-back i {
-            font-size: 0.9rem;
+            font-size: 1rem;
         }
 
         /* ══════════════════════════════════════════════════════════════
@@ -238,30 +256,30 @@
         @media (max-width: 600px) {
             .project-grid { grid-template-columns: 1fr; }
             .header h1 { font-size: 2.5rem; }
+            .nav-bar, .footer-actions { justify-content: center; }
         }
     </style>
 </head>
 <body>
 
     <div class="container">
-        <!-- Top Navigation -->
         <nav class="nav-bar">
             <a href="http://rajin.work.gd/" class="btn-back">
                 <i class="fas fa-arrow-left"></i> Main Portfolio
             </a>
+            <a href="http://rajin.work.gd/" class="btn-back btn-highlight" title="Go to Hub">
+                <i class="fas fa-link"></i>
+            </a>
         </nav>
 
-        <!-- Header -->
         <header class="header">
             <span class="tagline">Curiosity-Driven Development</span>
             <h1>Inquisitive <br>Mind Projects</h1>
             <p>A collection of tools, visualizations, and investigative archives built to explore the intersections of data, psychology, and history.</p>
         </header>
 
-        <!-- Projects Grid -->
         <main class="project-grid">
 
-            <!-- Rajin Work GD -->
             <a href="http://rajin.work.gd/" class="project-card" target="_blank">
                 <div class="project-icon">
                     <i class="fas fa-network-wired"></i>
@@ -271,7 +289,6 @@
                 <div class="project-link">Connect Now <i class="fas fa-arrow-right"></i></div>
             </a>
 
-            <!-- Image Bin 38 -->
             <a href="https://radiantrider38.github.io/imageBin38/" class="project-card" target="_blank">
                 <div class="project-icon">
                     <i class="fas fa-expand-arrows-alt"></i>
@@ -281,7 +298,6 @@
                 <div class="project-link">Launch Project <i class="fas fa-arrow-right"></i></div>
             </a>
 
-            <!-- Pie Visualize -->
             <a href="https://radiantrider38.github.io/pi" class="project-card" target="_blank">
                 <div class="project-icon">
                     <i class="fas fa-chart-pie"></i>
@@ -291,7 +307,6 @@
                 <div class="project-link">Launch Project <i class="fas fa-arrow-right"></i></div>
             </a>
 
-            <!-- Word Association Test -->
             <a href="https://radiantrider38.github.io/wattest" class="project-card" target="_blank">
                 <div class="project-icon">
                     <i class="fas fa-brain"></i>
@@ -301,7 +316,6 @@
                 <div class="project-link">Launch Project <i class="fas fa-arrow-right"></i></div>
             </a>
 
-            <!-- Movie Archive -->
             <a href="https://radiantrider38.github.io/movie" class="project-card" target="_blank">
                 <div class="project-icon">
                     <i class="fas fa-film"></i>
@@ -311,7 +325,6 @@
                 <div class="project-link">Launch Project <i class="fas fa-arrow-right"></i></div>
             </a>
 
-            <!-- BDR Massacre -->
             <a href="https://radiantrider38.github.io/bdr" class="project-card" target="_blank">
                 <div class="project-icon">
                     <i class="fas fa-search"></i>
@@ -321,7 +334,6 @@
                 <div class="project-link">Launch Project <i class="fas fa-arrow-right"></i></div>
             </a>
 
-            <!-- ISSB IQ Demo -->
             <a href="https://radiantrider38.github.io/iqdemo" class="project-card" target="_blank">
                 <div class="project-icon">
                     <i class="fas fa-lightbulb"></i>
@@ -333,10 +345,12 @@
 
         </main>
 
-        <!-- Bottom Navigation -->
         <footer class="footer-actions">
             <a href="http://rajin.work.gd/" class="btn-back">
                 <i class="fas fa-house"></i> Return to Portfolio
+            </a>
+            <a href="http://rajin.work.gd/" class="btn-back btn-highlight" title="Go to Hub">
+                <i class="fas fa-globe"></i>
             </a>
         </footer>
     </div>
